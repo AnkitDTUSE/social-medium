@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="text-white w-full p-10 min-h-screen bg-zinc-900">
+      <h3 class="text-3xl my-5">Login Your Account</h3>
+      <form action="/login" method="post">
+        <input
+          class="px-3 py-2 outline-none mr-3 bg-transparent border-2 rounded-lg border-zinc-800"
+          type="email"
+          placeholder="email"
+          name="email"
+        />
+        <input
+          class="px-3 py-2 outline-none mr-3 bg-transparent border-2 rounded-lg border-zinc-800"
+          type="password"
+          placeholder="password"
+          name="password"
+        />
+        <input
+          type="submit"
+          class="bg-yellow-500 rounded-md px-5 py-3"
+          value="Login "
+        />
+      </form>
+      <h3 class="text-zinc-400 text-[1rem] mt-5" >If not a user</h3>
+      <a
+        href="/"
+        class="py-2 mt-2 px-4 inline-block bg-yellow-500 text-black rounded-lg"
+        >Create User</a
+      >
+    </div>
+  </body>
+</html>

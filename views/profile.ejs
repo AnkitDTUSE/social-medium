@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text-white w-full p-10 min-h-screen bg-zinc-900">
+      <div class="w-full flex justify-between mb-5">
+        <a class="bg-blue-500 py-2 px-5 inline-block my-1 rounded-lg" href="/"
+          >Back</a
+        >
+        <a
+          class="bg-red-500 py-2 px-5 inline-block my-1 rounded-lg"
+          href="/logout"
+          >Logout</a
+        >
+      </div>
+      <div
+        class="w-52 h-52 rounded-lg mb-5 flex justify-center overflow-hidden items-center"
+      >
+        <a href="/profileEditor" class="w-full h-full"
+          ><img
+            class="w-full h-full object-cover"
+            src="/images/upload/<%=user.profilePic%>"
+            alt=""
+        /></a>
+      </div>
+      <h3 class="text-3xl my-5">Hello, <%=user.name%> ❤️</h3>
+      <h5 class="mb-5">you can create a new post</h5>
+      <form action="/post" method="post">
+        <textarea
+          placeholder="What's on your mind"
+          class="w-2/3 p-3 resize-none block bg-transparent border-2 border-zinc-800 rounded-md outline-none"
+          name="postData"
+        ></textarea>
+        <input
+          type="submit"
+          class="w-40 px-3 py-2 text-black bg-yellow-500 block rounded-md mt-3"
+          value="Create It!"
+        />
+      </form>
+      <div class="posts mt-10">
+        <h3 class="text-zinc-500">Your Posts</h3>
+        <div class="postContainer flex gap-5 mt-5">
+          <%user.posts.forEach((post)=>{ %>
+          <div
+            class="post w-[20rem] flex flex-col justify-between rounded-lg bg-zinc-800 p-5 border-2 border-zinc-700"
+          >
+            <div>
+              <h4 class="text-2xl mb-3 text-zinc-300"><%=user.name%></h4>
+              <p><%=post.content%></p>
+            </div>
+            <div class=" flex flex-col justify-between">
+              <div>
+                <small class="mt-5 inline-block text-blue-300"
+                  ><%=post.likes.length%> likes</small
+                >
+              </div>
+              <div class="buttns flex justify-between">
+                <a class="text-blue-500" href="/like/<%=post._id%>">
+                  <%=(post.likes.indexOf(user._id)===-1)? "Like":"Unlike" %> </a
+                ><a class="text-zinc-400" href="/edit/<%=post._id%>">Edit</a>
+              </div>
+            </div>
+          </div>
+          <%})%>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

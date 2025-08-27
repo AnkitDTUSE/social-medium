@@ -1,0 +1,7 @@
+User will write posts
+    --> create users / register
+    --> login 
+    --> logout
+    --> post creation
+    --> post like
+    --> post deletion

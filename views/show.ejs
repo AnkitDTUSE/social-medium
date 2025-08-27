@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text-white w-full p-10 min-h-screen bg-zinc-900">
+      <div class="w-full flex justify-start mb-5">
+        <a class="bg-blue-500 py-2 px-5 inline-block my-1 rounded-lg" href="/"
+          >Back</a
+        >
+      </div>
+      <div
+        class="w-52 h-52 rounded-lg mb-5 flex justify-center overflow-hidden items-center"
+      >
+        <img
+          class="w-full h-full object-cover"
+          src="/images/upload/<%=user.profilePic%>"
+          alt=""
+        />
+      </div>
+      <h3 class="text-3xl my-5">I'm <%=user.name%> ❤️</h3>
+      <h5 class="mb-2"><%=user.name%>'s Posts</h5>
+
+      <div class="posts mt-7">
+        <div class="postContainer flex gap-5 mt-5">
+          <%if(user.posts.length >0){%> <%user.posts.forEach((post)=>{ %>
+          <div
+            class="post w-[20rem] flex flex-col justify-between rounded-lg bg-zinc-800 p-5 border-2 border-zinc-700"
+          >
+            <h4 class="text-2xl mb-3 text-zinc-300"><%=user.name%></h4>
+            <p><%=post.content%></p>
+
+            <div class="buttns mt-5 flex justify-between">
+              <small class="inline-block text-blue-300"
+                ><%=post.likes.length%> likes</small
+              >
+              <a class="text-blue-500" href="/like_view/<%=post._id%>">
+                <%=(post.likes.indexOf(user._id)===-1)? "Like":"Unlike" %>
+              </a>
+            </div>
+          </div>
+          <%})%>
+           <%}else{%>
+          <h3 class="text-3xl my-5 text-zinc-500">No posts Yet</h3>
+          <% }%>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
