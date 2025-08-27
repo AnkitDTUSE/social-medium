@@ -7,7 +7,7 @@ const postModel = require("./models/post");
 const cookieParser = require("cookie-parser");
 const upload = require("./config/multer.config.js");
 // const multer = require("multer");
-// const crypto = require("crypto");
+const crypto = require("crypto");
 
 const app = express();
 
