@@ -6,8 +6,6 @@ const userModel = require("./models/user");
 const postModel = require("./models/post");
 const cookieParser = require("cookie-parser");
 const upload = require("./config/multer.config.js");
-// const multer = require("multer");
-const crypto = require("crypto");
 
 const app = express();
 
@@ -16,36 +14,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-
-// let func = (req, file, cb) => {
-//   crypto.randomBytes(12, (err, bytes) => {
-//     console.log(bytes.toString('hex'));
-//   });
-// };
-
-// func()
-
-// const storage = multer.diskStorage({
-//   destination: (req, es, cb) => {
-//     cb(null, "./public/images/upload");
-//   },
-//   filename: (req, file, cb) => {
-//     crypto.randomBytes(12, (err, bytes) => {
-//       const fn = bytes.toString("hex") + path.extname(file.originalname);
-//       cb(null, fn);
-//     });
-//   },
-// });
-
-// const upload = multer({storage})
-
-// app.get("/test", (req, res) => {
-//   res.render("test");
-// });
-
-// app.post("/upload",upload.single('image') ,(req, res) => {
-//   console.log(req.file);
-// });
 
 app.get("/", async (req, res) => {
   let users = await userModel.find();
